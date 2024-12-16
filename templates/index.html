@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Items List</title>
+    <title>Items</title>
 </head>
 <body>
     <h1>Items</h1>
     <ul>
         {% for item in items %}
-            <li>{{ item[1] }}</li> <!-- item[1] is the name of the item -->
+            <li>
+                <a href="/item/{{ item[0] }}">{{ item[1] }}</a>
+                <form action="/item/{{ item[0] }}/delete" method="POST" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Are you sure you want to delete this item?')">Delete Item</button>
+                </form>
+            </li>
         {% endfor %}
     </ul>
 
